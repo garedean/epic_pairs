@@ -21,22 +21,34 @@ describe('User') do
 
   end
 
-  it("says a match is good if both programmer ratings are equal") do
-    user1 = User.create(first_name: 'jim', last_name: 'smith', programmer_rating: 3)
-    user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 3)
-    expect(user1.match(user2)).to(eq("great"))
-  end
+  # it("says a prog_match is good if both programmer ratings are equal") do
+  #   user1 = User.create(first_name: 'jim', last_name: 'smith', programmer_rating: 3)
+  #   user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 3)
+  #   expect(user1.prog_match(user2)).to(eq("great"))
+  # end
+  #
+  # it("says a prog_match is good if programmer ratings are one point apart") do
+  #   user1 = User.create(first_name: 'jim', last_name: 'smith', programmer_rating: 3)
+  #   user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 4)
+  #   expect(user1.prog_match(user2)).to(eq("good"))
+  # end
+  #
+  # it("says a prog_match is okay if programmer ratings are two points apart") do
+  #   user1 = User.create(first_name: 'jim', last_name: 'smith', programmer_rating: 3)
+  #   user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 5)
+  #   expect(user1.prog_match(user2)).to(eq("okay"))
+  # end
 
-  it("says a match is good if programmer ratings are one point apart") do
+  # it("says a project_match is okay if project ratings are equal") do
+  #   user1 = User.create(first_name: 'jim', last_name: 'smith', project_rating: 3)
+  #   user2 = User.create(first_name:"billy", last_name: "bob", project_rating: 3)
+  #   expect(user1.project_match(user2)).to(eq("great"))
+  # end
+
+  it("says a prog_match is a good match if it is 3 or higher") do
     user1 = User.create(first_name: 'jim', last_name: 'smith', programmer_rating: 3)
     user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 4)
-    expect(user1.match(user2)).to(eq("good"))
-  end
-
-  it("says a match is okay if programmer ratings are two points apart") do
-    user1 = User.create(first_name: 'jim', last_name: 'smith', programmer_rating: 3)
-    user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 5)
-    expect(user1.match(user2)).to(eq("okay"))
+    expect(user1.match(user2)).to(eq("good match"))
   end
 
 end

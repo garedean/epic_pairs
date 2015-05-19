@@ -14,17 +14,57 @@ validates(:programmer_rating, :presence => true)
 before_validation(:titleize_first_name)
 before_validation(:titleize_last_name)
 
-  define_method(:match) do |second_user|
+  define_method(:prog_match) do |second_user|
+    total_points = 0
     if self.programmer_rating==(second_user.programmer_rating)
-      "great"
+      total_points = 5
     elsif self.programmer_rating==(second_user.programmer_rating + 1) || self.programmer_rating==(second_user.programmer_rating - 1)
-      "good"
+      total_points = 3
     elsif self.programmer_rating==(second_user.programmer_rating + 2) || self.programmer_rating==(second_user.programmer_rating - 2)
-      "okay"
+      total_points = 1
     else
-      "bad"
+      total_points = 0
+    end
+    total_points
+  end
+    # commented out until db is updated to have project_rating column.
+  # define_method(:project_match) do |second_user|
+  #   if self.project_rating==(second_user.project_rating)
+  #     "great"
+  #   elsif self.project_rating==(second_user.project_rating + 1) || self.project_rating==(second_user.project_rating - 1)
+  #     "good"
+  #   elsif self.project_rating==(second_user.project_rating + 2) || self.project_rating==(second_user.project_rating - 2)
+  #     "okay"
+  #   else
+  #     "bad"
+  #   end
+  #
+  # end
+  #
+  # define_method(:pace_match) do |second_user|
+  #   if self.pace_rating==(second_user.pace_rating)
+  #     "great"
+  #   elsif self.pace_rating==(second_user.pace_rating + 1) || self.pace_rating==(second_user.pace_rating - 1)
+  #     "good"
+  #   elsif self.pace_rating==(second_user.pace_rating + 2) || self.pace_rating==(second_user.pace_rating - 2)
+  #     "okay"
+  #   else
+  #     "bad"
+  #   end
+  # end
+
+  define_method(:match) do |second_user|
+    total_points = self.prog_match(second_user)
+    total_points = total_points + self.project_match(second_user)
+    # total_points = total_points + self.pace_match(second_user)
+    if total_points >= 3
+      "good match"
+    else
+      "not a good match"
     end
   end
+
+
 
   private
 
