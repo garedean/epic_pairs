@@ -43,7 +43,7 @@ post('/users') do
   lname = params.fetch("lname")
   description = params.fetch("description")
   email = params.fetch("email")
-  prog_rating = params.fetch("rating")
+  prog_rating = params.fetch("rating").to_i
   User.new({fname: fname, lname: lname, description: description, email: email, rating: prog_rating})
   erb(:"user/signup")
 end
