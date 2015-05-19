@@ -24,9 +24,13 @@ ActiveRecord::Schema.define(version: 20150519224831) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "hometown"
+    t.string   "portland_duration"
+    t.text     "hobbies"
+    t.text     "pair_qualities"
+    t.string   "preferred_matches"
     t.integer  "pace_rating"
     t.integer  "project_rating"
     t.integer  "lb_rating"
   end
-
 end

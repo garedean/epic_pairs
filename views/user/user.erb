@@ -1,0 +1,72 @@
+<h1 class="page-header"><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+
+<div class="row dashboard-wrapper">
+  <div class="col-sm-6 col-sm-offset-3">
+    <form action="/users/<%= @user.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <div class="top-section">
+        <div class="form-group">
+          <label for="first_name">First name:</label>
+          <input id="first_name" class="form-control" name="first_name" type="text" value="<%= @user.first_name %>">
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">Last name:</label>
+          <input id="last_name" class="form-control" name="last_name" type="text" value="<%= @user.last_name %>">
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Compared to your peers, where would you place your skill level?</label><br>
+          <select class="form-control" name="rating">
+              <option></option>
+              <option value="1">1 - Dazed and confused</option>
+              <option value="2">2 - Not quite there</option>
+              <option value="3">3 - About average</option>
+              <option value="4">4 - Feeling good</option>
+              <option value="5">5 - Level 15 Ruby Wizard</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="preferred_matches">What levels would you like to work with?</label><br>
+        <select multiple class="form-control" name="preferred_matches[]">
+            <option value="1">1 - Dazed and confused</option>
+            <option value="2">2 - Not quite there</option>
+            <option value="3">3 - About average</option>
+            <option value="4">4 - Feeling good</option>
+            <option value="5">5 - Level 15 Ruby Wizard</option>
+        </select>
+      </div>
+    </div>
+
+      <hr>
+
+      <h5 class="text-center">Care to share a few things with your partners? This will help them get to know you a little bit before your match!</h5>
+
+      <div class="form-group">
+        <label for="hometown">Where'd you grow up?</label>
+        <input id="hometown" class="form-control" name="hometown" type="text">
+      </input>
+
+      <div class="form-group">
+        <label for="portland_duration">How long have you lived in Portland?</label>
+        <input id="portland_duration" class="form-control" name="portland_duration" type="text">
+        </input>
+      </div>
+
+      <div class="form-group">
+        <label for="hobbies">What do you like to do for fun?</label>
+        <textarea id="hobbies" class="form-control" name="hobbies" type="text">
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="pair_qualities">What are some things you like in a pair?</label>
+        <textarea id="pair_qualities" class="form-control" name="pair_qualities" type="text">
+        </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary stretch">Save</button>
+    </form>
+  </div>
+</div>
