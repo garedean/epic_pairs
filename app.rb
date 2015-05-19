@@ -2,30 +2,33 @@ require('sinatra')
 require('sinatra/activerecord')
 require('sinatra/reloader')
 also_reload('lib/*.rb')
-require('./lib/users')
+require('./lib/user')
 require('pg')
 require('pry')
-
 
 get('/') do
   erb(:index)
 end
 
 get('/login') do
-  erb(:"user/login")
+  erb(:"user/login", layout: :landing_page)
 end
 
-get('/user_list') do
+get('/signup') do
+  erb(:"user/signup", layout: :landing_page)
+end
+
+get('/users') do
   @users = User.all()
   erb(:"user/users")
 end
 
-get('/user_detail/:id') do
+get('/users/:id') do
   @user = User.find(params.fetch("id").to_i)
   erb(:"user/user")
 end
 
-post('/add_user') do
+post('/users') do
   fname = params.fetch("fname")
   lname = params.fetch("lname")
   description = params.fetch("description")
@@ -35,7 +38,7 @@ post('/add_user') do
   erb(:"user/signup")
 end
 
-patch('/user_detail/:id') do
+patch('/users/:id') do
   description_update = params.fetch("description")
   rating_update = params.fetch("rating")
   @user = User.find(params.fetch("id").to_i)
@@ -43,8 +46,8 @@ patch('/user_detail/:id') do
   redirect to(:"user/user")
 end
 
-delete('/user_detail/:id') do
-  @user = User.find(params.fetch("id").to_i).delete
-  @users = User.all()
-  # redirect to(:"user/users")
-end
+# delete('/users/:id') do
+#   @user = User.find(params.fetch("id").to_i).delete
+#   @users = User.all()
+#   redirect to(:"user/users")
+# end
