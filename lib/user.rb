@@ -14,6 +14,8 @@ validates(:programmer_rating, :presence => true)
 before_validation(:titleize_first_name)
 before_validation(:titleize_last_name)
 
+
+# How comfortable are you as a programmer?
   define_method(:prog_match) do |second_user|
     total_points = 0
     if self.programmer_rating==(second_user.programmer_rating)
@@ -28,6 +30,7 @@ before_validation(:titleize_last_name)
     total_points
   end
 
+# How comfortable are you with your current project?
   define_method(:project_match) do |second_user|
     total_points = 0
     if self.project_rating==(second_user.project_rating)
@@ -42,6 +45,7 @@ before_validation(:titleize_last_name)
     total_points
   end
 
+# What is your preferred pace?
   define_method(:pace_match) do |second_user|
     total_points = 0
     if self.pace_rating==(second_user.pace_rating)
@@ -56,6 +60,7 @@ before_validation(:titleize_last_name)
     total_points
   end
 
+# Are you in the mood to learn or build?
   define_method(:lb_match) do |second_user|
     total_points = 0
     if self.lb_rating==(second_user.lb_rating)
