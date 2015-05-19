@@ -14,6 +14,18 @@ validates(:programmer_rating, :presence => true)
 before_validation(:titleize_first_name)
 before_validation(:titleize_last_name)
 
+  define_method(:match) do |second_user|
+    if self.programmer_rating==(second_user.programmer_rating)
+      "great"
+    elsif self.programmer_rating==(second_user.programmer_rating + 1) || self.programmer_rating==(second_user.programmer_rating - 1)
+      "good"
+    elsif self.programmer_rating==(second_user.programmer_rating + 2) || self.programmer_rating==(second_user.programmer_rating - 2)
+      "okay"
+    else
+      "bad"
+    end
+  end
+
   private
 
   define_method(:titleize_first_name) do
