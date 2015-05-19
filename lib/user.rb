@@ -75,14 +75,30 @@ before_validation(:titleize_last_name)
     total_points
   end
 
+# Need to test this method!!!!
+  define_method(:preferred_match) do |second_user|
+    total_points = 0
+    if self.preferred_match==(second_user.prog_match)
+      total_points = 5
+    elsif self.preferred_match==(second_user.prog_match + 1) || self.preferred_match==(second_user.prog_match - 1)
+      total_points = 3
+    elsif self.preferred_match==(second_user.prog_match + 2) || self.preferred_match==(second_user.prog_match - 2)
+      total_points = 1
+    else
+      total_points = 0
+    end
+    total_points
+  end
+
   define_method(:match) do |second_user|
     total_points = self.prog_match(second_user)
     total_points = total_points + self.project_match(second_user)
     total_points = total_points + self.pace_match(second_user)
     total_points = total_points + self.lb_match(second_user)
-    if total_points >= 16
+    total_points = total_points + self.preferred_match(second_user)
+    if total_points >= 20
       "great match"
-    elsif total_points >= 12 && total_points <= 15
+    elsif total_points >= 15 && total_points <= 19
       "good match"
     else
       "not a good match"
