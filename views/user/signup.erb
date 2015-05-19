@@ -1,1 +1,27 @@
-Signup
+<!-- Form will go here -->
+<h2>Fill out the form below to create a new user</h2>
+
+<form action="/users" method="post">
+  <label for="fname">First Name:</label>
+  <input id="fname" name="fname" type="text">
+
+  <label for="lname">Last Name:</label>
+  <input id="lname" name="lname" type="text">
+
+  <label for="email">Email Address:</label>
+  <input id="email" name="email" type="text">
+
+  <label for="description">Enter a short description of yourself:</label>
+  <input id="description" name="description" type="text">
+
+  <label for="rating">Choose your comfort level with programming:</label>
+  <input type="radio" name="rating" value="5">5 - Very Comfortable<br>
+  <input type="radio" name="rating" value="4">4 - Mostly Comfortable<br>
+  <input type="radio" name="rating" value="3">3 - Somewhat Comfortable<br>
+  <input type="radio" name="rating" value="2">2 - Not Very Comfortable<br>
+  <input type="radio" name="rating" value="1">1 - Not At All Comfortable<br>
+
+  <button type="submit">complete new user form</button>
+</form>
+
+<a href="/login">Return to login page</a>
