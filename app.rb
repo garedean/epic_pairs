@@ -14,6 +14,16 @@ get('/login') do
   erb(:"user/login", layout: :landing_page)
 end
 
+post('/authenticate') do |email, password|
+  user = User.find_by(email: email)
+
+  if user
+    redirect to("/users/#{user.id}")
+  else
+    redirect back
+  end
+end
+
 get('/signup') do
   erb(:"user/signup", layout: :landing_page)
 end
