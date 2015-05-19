@@ -1,27 +1,27 @@
-<!-- Form will go here -->
-<h2>Fill out the form below to create a new user</h2>
+<h1 class="page-header">Sign Up</h1>
 
-<form action="/users" method="post">
-  <label for="fname">First Name:</label>
-  <input id="fname" name="fname" type="text">
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 login-wrapper">
 
-  <label for="lname">Last Name:</label>
-  <input id="lname" name="lname" type="text">
+    <form action="/users" method="post">
+      <div class="form-group">
+        <!-- <label for="fname">First Name:</label> -->
+        <input id="fname" class="form-control" name="fname" type="text" placeholder="First name" required autofocus>
+      </div>
 
-  <label for="email">Email Address:</label>
-  <input id="email" name="email" type="text">
+      <div class="form-group">
+        <!-- <label for="lname">Last Name:</label> -->
+        <input id="lname" class="form-control" name="lname" type="text" placeholder="Last name" required>
+      </div>
 
-  <label for="description">Enter a short description of yourself:</label>
-  <input id="description" name="description" type="text">
+      <div class="form-group">
+        <!-- <label for="email">Email Address:</label> -->
+        <input id="email" class="form-control" name="email" type="email" placeholder="Email" required>
+      </div>
 
-  <label for="rating">Choose your comfort level with programming:</label>
-  <input type="radio" name="rating" value="5">5 - Very Comfortable<br>
-  <input type="radio" name="rating" value="4">4 - Mostly Comfortable<br>
-  <input type="radio" name="rating" value="3">3 - Somewhat Comfortable<br>
-  <input type="radio" name="rating" value="2">2 - Not Very Comfortable<br>
-  <input type="radio" name="rating" value="1">1 - Not At All Comfortable<br>
+      <button type="submit" class="btn btn-primary stretch">Sign Up</button>
+    </form>
 
-  <button type="submit">complete new user form</button>
-</form>
-
-<a href="/login">Return to login page</a>
+    <a href="/login">Return to login page</a>
+  </div>
+</div>

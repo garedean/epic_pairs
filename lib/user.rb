@@ -6,10 +6,10 @@ validates(:last_name, :presence => true)
 
 validates(:email, :presence => true)
 
-validates(:description, :presence => true)
-validates :description, length: { maximum: 500 }
+#validates(:description, :presence => true)
+#validates :description, length: { maximum: 500 }
 
-validates(:programmer_rating, :presence => true)
+#validates(:programmer_rating, :presence => true)
 
 before_validation(:titleize_first_name)
 before_validation(:titleize_last_name)
