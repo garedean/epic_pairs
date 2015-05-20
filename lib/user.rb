@@ -9,6 +9,7 @@ def email_hashed
   Digest::MD5.hexdigest(email)
 end
 
+# How comfortable are you as a programmer?
   define_method(:prog_match) do |second_user|
     total_points = 0
     if self.programmer_rating==(second_user.programmer_rating)
@@ -23,6 +24,7 @@ end
     total_points
   end
 
+# How comfortable are you with your current project?
   define_method(:project_match) do |second_user|
     total_points = 0
     if self.project_rating==(second_user.project_rating)
@@ -37,6 +39,7 @@ end
     total_points
   end
 
+# What is your preferred pace?
   define_method(:pace_match) do |second_user|
     total_points = 0
     if self.pace_rating==(second_user.pace_rating)
@@ -51,6 +54,7 @@ end
     total_points
   end
 
+# Are you in the mood to learn or build?
   define_method(:lb_match) do |second_user|
     total_points = 0
     if self.lb_rating==(second_user.lb_rating)
@@ -65,14 +69,30 @@ end
     total_points
   end
 
+# Need to test this method!!!!
+  define_method(:preferred_match) do |second_user|
+    total_points = 0
+    if self.preferred_match==(second_user.prog_match)
+      total_points = 5
+    elsif self.preferred_match==(second_user.prog_match + 1) || self.preferred_match==(second_user.prog_match - 1)
+      total_points = 3
+    elsif self.preferred_match==(second_user.prog_match + 2) || self.preferred_match==(second_user.prog_match - 2)
+      total_points = 1
+    else
+      total_points = 0
+    end
+    total_points
+  end
+
   define_method(:match) do |second_user|
     total_points = self.prog_match(second_user)
     total_points = total_points + self.project_match(second_user)
     total_points = total_points + self.pace_match(second_user)
     total_points = total_points + self.lb_match(second_user)
-    if total_points >= 16
+    total_points = total_points + self.preferred_match(second_user)
+    if total_points >= 20
       "great match"
-    elsif total_points >= 12 && total_points <= 15
+    elsif total_points >= 15 && total_points <= 19
       "good match"
     else
       "not a good match"
