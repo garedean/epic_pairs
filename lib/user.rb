@@ -119,6 +119,18 @@ end
     matches.join(', ')
   end
 
+
+  define_singleton_method(:randomize_user_pref) do
+    options = [1, 2, 3, 4, 5]
+    output_pref = []
+    choice_amount = Random.new.rand(1..5)
+    choice_amount.times() do
+      pref_id = Random.new.rand(1..5)
+      output_pref << pref_id
+    end
+    output_pref.uniq.join
+  end
+
   private
 
   define_method(:titleize_first_name) do
