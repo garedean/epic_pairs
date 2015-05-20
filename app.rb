@@ -90,9 +90,18 @@ patch('/users/:id') do
 end
 
 get('/matches') do
-  @user = User.find(3)
+  @user = User.find(2)
+  @users = User.all()
+
   erb(:"user/matches")
 end
+
+get('/users/display/:id') do
+  @user = User.find(params.fetch("id").to_i)
+  erb(:"user/display")
+
+end
+
 
 # delete('/users/:id') do
 #   @user = User.find(params.fetch("id").to_i).delete
