@@ -96,6 +96,13 @@ get('/matches') do
   erb(:"user/matches")
 end
 
+get('/users/display/:id') do
+  @user = User.find(params.fetch("id").to_i)
+  erb(:"user/display")
+
+end
+
+
 # delete('/users/:id') do
 #   @user = User.find(params.fetch("id").to_i).delete
 #   @users = User.all()
