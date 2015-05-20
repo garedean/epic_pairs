@@ -102,7 +102,7 @@ end
   define_method(:print_pref_match) do
     match_ids = preferred_matches.split("").map(&:to_i)
     matches = []
-
+  
       if match_ids.include? 1
         matches << "1 - Dazed and confused"
       end
