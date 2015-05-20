@@ -1,6 +1,5 @@
 user_list = [
   ["Burnett", "Adkins", "burnettadkins@greeker.com"],
-  ["Burnett", "Adkins", "burnettadkins@greeker.com"],
   ["Wall", "Wilcox", "wallwilcox@greeker.com"],
   ["Justine", "Rojas", "justinerojas@greeker.com"],
   ["Stone", "Bradshaw", "stonebradshaw@greeker.com"],

@@ -22,7 +22,7 @@ helpers do
 
   def gravatar_link(user)
     user_hash = user.email_hashed
-    "<img src='http://www.gravatar.com/avatar/#{user_hash}?s=150'>"
+    "<img src='http://www.gravatar.com/avatar/#{user_hash}?s=200'>"
   end
 end
 
@@ -89,17 +89,16 @@ patch('/users/:id') do
   end
 end
 
-get('/matches') do
-  @user = User.find(2)
+get('/users/:id/matches') do
+  @user = User.find(params[:id].to_i)
   @users = User.all()
 
   erb(:"user/matches")
 end
 
-get('/users/display/:id') do
+get('/users/:id/profile') do
   @user = User.find(params.fetch("id").to_i)
   erb(:"user/display")
-
 end
 
 

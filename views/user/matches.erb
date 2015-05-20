@@ -7,7 +7,7 @@
 <% if @users.length().>(1) %>
   <% @users.each() do |user| %>
     <% if @user.preferred_match(user).==(3) %>
-      <a href="/users/display/<%= user.id() %>"><%= user.first_name() %> <%= user.last_name() %></a>
+      <a href="/users/<%= user.id() %>/profile"><%= user.first_name() %> <%= user.last_name() %></a>
       <br>
     <% end %>
     <% end %>

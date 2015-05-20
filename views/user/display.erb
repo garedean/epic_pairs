@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <%= gravatar_link(@user) %>
-    <br>
-  <%= @user.first_name %>
+
+    <p>
+      <%= @user.first_name %>
+    </p>
   <br>
   <%= @user.last_name %>
   <br>
@@ -14,6 +16,8 @@
   <br>
   <%= @user.pair_qualities %>
   <br>
+  <p>Programmer Rating: <%= @user.programmer_rating %></p>
+  <p>Preferred Match: <%= @user.preferred_matches %></p>
   <br>
   <div class="row">
     <a href='/matches' role="button" class="btn btn-primary">Return to my matches</a>
