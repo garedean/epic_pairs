@@ -98,7 +98,9 @@ end
 
 get('/users/:id/profile') do
   @user = User.find(params.fetch("id").to_i)
-  erb(:"user/display")
+  @users = User.all()
+
+  erb(:"user/matches")
 end
 
 
