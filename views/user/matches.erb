@@ -1,8 +1,16 @@
 <h1 class="page-header">My Matches</h1>
 
-<h3>Your level of skill: <%= @user.print_programmer_rating %></h3>
+
 <h3>Your preference for partner skill: <%= @user.print_pref_match %></h3>
 
 <h3>Here are your current matches:<h3>
 
-  
+<% if @users.length().>(1) %>
+  <% @users.each() do |user| %>
+    <% if @user.preferred_match(user).==(3) %>
+      <a href="/users/<%= user.id() %>"><%= user.name() %></a>
+    <% end %>
+    <% end %>
+    <% else %>
+    <h3>There are no matches.</h3>
+  <% end %>

@@ -90,7 +90,9 @@ patch('/users/:id') do
 end
 
 get('/matches') do
-  @user = User.find(3)
+  @user = User.find(2)
+  @users = User.all()
+
   erb(:"user/matches")
 end
 
