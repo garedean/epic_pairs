@@ -1,18 +1,13 @@
-class User <ActiveRecord::Base
-
+class User < ActiveRecord::Base
 validates(:first_name, :presence => true)
-
 validates(:last_name, :presence => true)
-
 validates(:email, :presence => true)
-
-#validates(:description, :presence => true)
-#validates :description, length: { maximum: 500 }
-
-#validates(:programmer_rating, :presence => true)
-
 before_validation(:titleize_first_name)
 before_validation(:titleize_last_name)
+
+def email_hashed
+  Digest::MD5.hexdigest(email)
+end
 
   define_method(:prog_match) do |second_user|
     total_points = 0

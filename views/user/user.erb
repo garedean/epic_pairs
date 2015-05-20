@@ -1,72 +1,97 @@
 <h1 class="page-header"><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 
 <div class="row dashboard-wrapper">
-  <div class="col-sm-6 col-sm-offset-3">
-    <form action="/users/<%= @user.id %>" method="post">
-      <input type="hidden" name="_method" value="patch">
-      <div class="top-section">
+  <form class="form-horizontal" action="/users/<%= @user.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+      <div class="col-sm-8 col-sm-offset-2">
+
+      <%#= gravatar_link(@user) %>
+
         <div class="form-group">
-          <label for="first_name">First name:</label>
-          <input id="first_name" class="form-control" name="first_name" type="text" value="<%= @user.first_name %>">
+          <label for="first_name" class="col-sm-3 control-label">First name:</label>
+          <div class="col-sm-7">
+            <input id="first_name" class="form-control" name="first_name" type="text" value="<%= @user.first_name %>">
+          </div>
         </div>
 
         <div class="form-group">
-          <label for="last_name">Last name:</label>
-          <input id="last_name" class="form-control" name="last_name" type="text" value="<%= @user.last_name %>">
+          <label for="last_name" class="col-sm-3 control-label">Last name:</label>
+          <div class="col-sm-7">
+            <input id="last_name" class="form-control" name="last_name" type="text" value="<%= @user.last_name %>">
+          </div>
         </div>
 
         <div class="form-group">
-          <label for="rating">Compared to your peers, where would you place your skill level?</label><br>
-          <select class="form-control" name="rating">
-              <option></option>
-              <option value="1">1 - Dazed and confused</option>
-              <option value="2">2 - Not quite there</option>
-              <option value="3">3 - About average</option>
-              <option value="4">4 - Feeling good</option>
-              <option value="5">5 - Level 15 Ruby Wizard</option>
-          </select>
+          <label for="email" class="col-sm-3 control-label">Email:</label>
+          <div class="col-sm-7">
+            <input id="email" class="form-control" name="email" type="text" value="<%= @user.email %>">
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="preferred_matches">What levels would you like to work with?</label><br>
-        <select multiple class="form-control" name="preferred_matches[]">
-            <option value="1">1 - Dazed and confused</option>
-            <option value="2">2 - Not quite there</option>
-            <option value="3">3 - About average</option>
-            <option value="4">4 - Feeling good</option>
-            <option value="5">5 - Level 15 Ruby Wizard</option>
-        </select>
-      </div>
-    </div>
+        <div class="form-group">
+          <label for="rating" class="col-sm-3 control-label">Compared to your peers, where would you place your skill level? (not shared)</label><br>
+          <div class="col-sm-7">
+            <select class="form-control" name="rating" size=5 required>
+                <option selected disabled hidden value=''></option>
+                <option value="1" <%= select_if_skill(@user, 1) %>>1 - Dazed and confused</option>
+                <option value="2" <%= select_if_skill(@user, 2) %>>2 - Not quite there</option>
+                <option value="3" <%= select_if_skill(@user, 3) %>>3 - About average</option>
+                <option value="4" <%= select_if_skill(@user, 4) %>>4 - Feeling good</option>
+                <option value="5" <%= select_if_skill(@user, 5) %>>5 - Level 15 Ruby Wizard</option>
+            </select>
+          </div>
+        </div>
 
-      <hr>
+        <div class="form-group">
+          <label for="preferred_matches" class="col-sm-3 control-label">What levels would you like to work with? (not shared)</label><br>
+          <div class="col-sm-7">
+            <select multiple class="form-control" name="preferred_matches[]" size=5 required>
+                <option value="1" <%= select_if_match(@user, 1) %>>1 - Dazed and confused</option>
+                <option value="2" <%= select_if_match(@user, 2) %>>2 - Not quite there</option>
+                <option value="3" <%= select_if_match(@user, 3) %>>3 - About average</option>
+                <option value="4" <%= select_if_match(@user, 4) %>>4 - Feeling good</option>
+                <option value="5" <%= select_if_match(@user, 5) %>>5 - Level 15 Ruby Wizard</option>
+            </select>
+          </div>
+        </div>
 
-      <h5 class="text-center">Care to share a few things with your partners? This will help them get to know you a little bit before your match!</h5>
+        <hr>
 
-      <div class="form-group">
-        <label for="hometown">Where'd you grow up?</label>
-        <input id="hometown" class="form-control" name="hometown" type="text">
-      </input>
+        <h5 class="text-center">Care to share some pre-pairing info with your partner?</h5>
 
-      <div class="form-group">
-        <label for="portland_duration">How long have you lived in Portland?</label>
-        <input id="portland_duration" class="form-control" name="portland_duration" type="text">
+        <div class="form-group">
+          <label for="hometown" class="col-sm-3 control-label">Where'd you grow up?</label>
+          <div class="col-sm-7">
+            <input id="hometown" class="form-control" name="hometown" type="text" value="<%= @user.hometown %>">
+          </div>
         </input>
       </div>
 
       <div class="form-group">
-        <label for="hobbies">What do you like to do for fun?</label>
-        <textarea id="hobbies" class="form-control" name="hobbies" type="text">
-        </textarea>
+        <label for="portland_duration" class="col-sm-3 control-label">How long have you lived in Portland?</label>
+        <div class="col-sm-7">
+          <input id="portland_duration" class="form-control" name="portland_duration" type="text" value="<%= @user.portland_duration %>">
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="pair_qualities">What are some things you like in a pair?</label>
-        <textarea id="pair_qualities" class="form-control" name="pair_qualities" type="text">
-        </textarea>
+        <label for="hobbies" class="col-sm-3 control-label">What do you like to do for fun?</label>
+        <div class="col-sm-7">
+          <textarea id="hobbies" class="form-control" name="hobbies" type="text"><%= @user.hobbies %>
+          </textarea>
+        </div>
       </div>
+
+      <div class="form-group">
+        <label for="pair_qualities" class="col-sm-3 control-label">What are some things you like in a pair?</label>
+        <div class="col-sm-7">
+          <textarea id="pair_qualities" class="form-control" name="pair_qualities" type="text"><%= @user.pair_qualities %>
+          </textarea>
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-primary stretch">Save</button>
+
     </form>
   </div>
 </div>

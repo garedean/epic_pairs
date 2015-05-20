@@ -1,18 +1,38 @@
 require('bundler/setup')
 Bundler.require(:default, :production, :test)
+require('digest/md5')
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+helpers do
+  def select_if_skill(object, expected)
+    if object.programmer_rating && object.programmer_rating == expected
+      "selected"
+    end
+  end
+
+  def select_if_match(object, expected)
+    if object.preferred_matches
+      preferred_matches = object.preferred_matches.split("").map(&:to_i)
+      if preferred_matches.include?(expected)
+        preferred_matches = object.preferred_matches.split("").map(&:to_i)
+      "selected"
+      end
+    end
+  end
+
+  def gravatar_link(user)
+    user_hash = user.email_hashed
+    "<img src='http://www.gravatar.com/avatar/#{user_hash}?s=150'>"
+  end
+end
+
 get('/') do
-  erb(:index)
+  erb(:"user/login", layout: :landing_page)
 end
 
 get('/reset') do
   User.delete_all
-  redirect back
-end
-
-get('/login') do
-  erb(:"user/login", layout: :landing_page)
+  redirect to("/")
 end
 
 post('/authenticate') do |email, password|
@@ -30,8 +50,6 @@ get('/signup') do
 end
 
 get('/users') do
-  @users = User.all()
-  erb(:"user/users")
 end
 
 get('/users/:id') do
@@ -54,13 +72,14 @@ end
 
 patch('/users/:id') do
   rating_update = params.fetch("rating")
-  @object = User.find(params.fetch("id").to_i)
-  preferred_matches = params.fetch("preferred_matches").join
-  hometown = params.fetch("hometown")
-  portland_duration = params.fetch("portland_duration")
-  hobbies = params.fetch("hobbies")
-  pair_qualities = params.fetch("pair_qualities")
-  @object.update({programmer_rating: rating_update, hometown: hometown, portland_duration: portland_duration, hobbies: hobbies, pair_qualities: pair_qualities, preferred_matches: preferred_matches})
+  @object = User.find(params["id"].to_i)
+  preferred_matches = params["preferred_matches"].join
+  hometown          = params["hometown"]
+  portland_duration = params["portland_duration"]
+  hobbies           = params["hobbies"]
+  pair_qualities    = params["pair_qualities"]
+  email             = params["email"]
+  @object.update(email: email, programmer_rating: rating_update, hometown: hometown, portland_duration: portland_duration, hobbies: hobbies, pair_qualities: pair_qualities, preferred_matches: preferred_matches)
   if @object.save
     redirect to("/users/#{@object.id}")
   else
