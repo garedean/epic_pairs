@@ -72,12 +72,9 @@ end
 # What is your preferred match?
   define_method(:preferred_match) do |second_user|
     total_points = 0
-    if self.preferred_matches.to_i()==(second_user.programmer_rating)
-      total_points = 5
-    elsif self.preferred_matches.to_i()==(second_user.programmer_rating + 1) || self.preferred_matches.to_i()==(second_user.programmer_rating - 1)
+    integer_matches = self.preferred_matches.split("").map(&:to_i)
+    if integer_matches.include?(second_user.programmer_rating)
       total_points = 3
-    elsif self.preferred_matches.to_i()==(second_user.programmer_rating + 2) || self.preferred_matches.to_i()==(second_user.programmer_rating - 2)
-      total_points = 1
     else
       total_points = 0
     end
