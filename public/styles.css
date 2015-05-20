@@ -2,6 +2,12 @@
     text-align: center;
 }
 
+.reset-link {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+}
+
 .logo {
   position: fixed;
   top: 10px;

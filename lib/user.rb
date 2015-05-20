@@ -70,19 +70,19 @@ end
   end
 
 # Need to test this method!!!!
-  define_method(:preferred_match) do |second_user|
-    total_points = 0
-    if self.preferred_match==(second_user.prog_match)
-      total_points = 5
-    elsif self.preferred_match==(second_user.prog_match + 1) || self.preferred_match==(second_user.prog_match - 1)
-      total_points = 3
-    elsif self.preferred_match==(second_user.prog_match + 2) || self.preferred_match==(second_user.prog_match - 2)
-      total_points = 1
-    else
-      total_points = 0
-    end
-    total_points
-  end
+  # define_method(:preferred_match) do |second_user|
+  #   total_points = 0
+  #   if self.preferred_match==(second_user.prog_match)
+  #     total_points = 5
+  #   elsif self.preferred_match==(second_user.prog_match + 1) || self.preferred_match==(second_user.prog_match - 1)
+  #     total_points = 3
+  #   elsif self.preferred_match==(second_user.prog_match + 2) || self.preferred_match==(second_user.prog_match - 2)
+  #     total_points = 1
+  #   else
+  #     total_points = 0
+  #   end
+  #   total_points
+  # end
 
   define_method(:match) do |second_user|
     total_points = self.prog_match(second_user)
@@ -97,6 +97,29 @@ end
     else
       "not a good match"
     end
+  end
+
+
+  define_method(:print_pref_match) do
+    match_ids = preferred_matches.split("").map(&:to_i)
+    matches = []
+
+      if match_ids.include? 1
+        matches << "1 - Dazed and confused"
+      end
+      if match_ids.include? 2
+        matches << "2 - Not quite there"
+      end
+      if match_ids.include? 3
+        matches << "3 - About average"
+      end
+      if match_ids.include? 4
+        matches << "4 - Feeling good"
+      end
+      if match_ids.include? 5
+        matches << "5 - Level 15 Ruby Wizard"
+      end
+    matches.join(', ')
   end
 
   private

@@ -27,7 +27,8 @@ helpers do
 end
 
 get('/') do
-  erb(:"user/login", layout: :landing_page)
+  #erb(:"user/login", layout: :landing_page)
+  erb(:"user/login")
 end
 
 get('/reset') do
@@ -46,7 +47,8 @@ post('/authenticate') do |email, password|
 end
 
 get('/signup') do
-  erb(:"user/signup", layout: :landing_page)
+  #erb(:"user/signup", layout: :landing_page)
+  erb(:"user/signup")
 end
 
 get('/users') do
@@ -85,6 +87,11 @@ patch('/users/:id') do
   else
     erb(:errors)
   end
+end
+
+get('/matches') do
+  @user = User.find(3)
+  erb(:"user/matches")
 end
 
 # delete('/users/:id') do

@@ -56,4 +56,9 @@ describe('User') do
     user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 5, project_rating: 5, pace_rating: 5, lb_rating: 5)
     expect(user1.match(user2)).to(eq("not a good match"))
   end
+
+  it("returns a string of preferred matches") do
+    user = User.create(first_name: 'jim', last_name: 'smith', email: "garrettdolson@gmail.com", programmer_rating: 1, preferred_matches: "12")
+    expect(user.print_pref_match).to(eq("1 - Dazed and confused, 2 - Not quite there"))
+  end
 end
