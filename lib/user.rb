@@ -81,6 +81,7 @@ end
     total_points
   end
 
+# This will find your best matches.
   define_method(:match) do |second_user|
     total_points = 0
     total_points = self.prog_match(second_user)

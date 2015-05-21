@@ -57,8 +57,9 @@ helpers do
 end
 
 get('/') do
+  @users = User.all
   #erb(:"user/login", layout: :landing_page)
-  erb(:"user/login")
+  erb(:"user/modified_login")
 end
 
 get('/reset') do
