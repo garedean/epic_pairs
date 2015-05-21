@@ -11,20 +11,20 @@
   <div class="container-fluid user-grid">
     <div class="row">
     <!-- <div class="col-sm-3"> -->
-    <div class="col-xs-6 col-sm-3"><img src="http://www.lorempixel.com/200/200/people">
-      <br>
-      <a href="/users/<%= user.id() %>"><b><%= user.first_name() %>&#160;<%= user.last_name() %></b></a>
-      <br>
-      <br>
-      <a href="/users/<%= user.id %>/matches" role="button" class="btn btn-primary">Matches for <%= user.first_name %></a>
-      <br>
-      <br>
-
+    <div class="col-xs-6 col-sm-3">
+      <div class="gravatar-wrapper grow">
+        <img src="http://www.lorempixel.com/200/200/people">
+      <h4>
+        <a href="/users/<%= user.id() %>">
+          <%= "#{user.first_name} #{user.last_name}" %></h4>
+        </a>
+        <a href="/users/<%= user.id %>/matches" role="button" class="btn btn-primary matches-link">Matches for <%= user.first_name %></a>
+    </div>
 </div>
   <% end %>
 </div>
 <% else %>
-  <h3>No users have been added to Epic Pairs yet.</h3>
+  <hr>
+  <h3 class="text-center lead">No users have been added to Epic Pairs yet.</h3>
+  <hr>
 <% end %>
-
-<p class="text-center">First time here? <a href="./signup">Sign up!</a></p>

@@ -33,7 +33,7 @@
 
         <div class="form-group">
           <label for="rating" class="control-label">Compared to your peers, where would you place your skill level?</label>
-          <select class="form-control" name="rating">
+          <select class="form-control" name="rating" required>
               <option selected disabled hidden value=''>Please choose</option>
               <option value="1" <%= select_if_skill(@user, 1) %>>1 - Dazed and confused</option>
               <option value="2" <%= select_if_skill(@user, 2) %>>2 - Not quite there</option>
@@ -56,7 +56,7 @@
 
         <div class="form-group">
           <label for="project_match" class="control-label">How comfortable are you with the current project?</label>
-          <select class="form-control" name="project_match">
+          <select class="form-control" name="project_match" required>
             <option selected disabled hidden value=''>Please choose</option>
             <option value="1" <%= select_if_comfort(@user, 1) %>>1 - Don't understand material</option>
             <option value="2" <%= select_if_comfort(@user, 2) %>>2 - Still confused</option>
@@ -69,7 +69,7 @@
         <div class="form-group">
           <label for="pace_match" class="control-label">What pace would you like to work at today?</label>
           <option selected disabled hidden value=''></option>
-          <select class="form-control" name="pace_match">
+          <select class="form-control" name="pace_match" required>
             <option selected disabled hidden value=''>Please choose</option>
             <option value="1" <%= select_if_pace(@user, 1) %>>1 - Snail's pace</option>
             <option value="2" <%= select_if_pace(@user, 2) %>>2 - Slow and steady</option>
@@ -82,7 +82,7 @@
         <div class="form-group">
           <label for="lb_match" class="control-label">Would you rather focus on learning material or building something new?</label>
           <option selected disabled hidden value=''>Please choose</option>
-          <select class="form-control" name="lb_match">
+          <select class="form-control" name="lb_match" required>
             <option selected disabled hidden value=''>Please choose</option>
             <option value="1" <%= select_if_focus(@user, 1) %>>1 - Focused on learning</option>
             <option value="2" <%= select_if_focus(@user, 2) %>>2 - More emphasis on learning</option>

@@ -57,7 +57,7 @@ helpers do
 end
 
 get('/') do
-  @users = User.all
+  @users = User.all.order(first_name: :asc)
   #erb(:"user/login", layout: :landing_page)
   erb(:"user/modified_login")
 end
@@ -126,7 +126,7 @@ end
 
 get('/users/:id/matches') do
   @user = User.find(params[:id].to_i)
-  @users = User.all()
+  @users = User.all.order(first_name: :asc)
 
   erb(:"user/matches")
 end
@@ -138,7 +138,7 @@ end
 
 get('/users/:user_id/matches/:id') do
   @user  = User.find(params[:user_id].to_i)
-  @users = User.all()
+  @users = User.all.order(first_name: :asc)
   @selected_user = User.find(params[:id].to_i)
 
   erb(:"user/matches")

@@ -1,7 +1,7 @@
 <h1 class="page-header"><%= @user.first_name %>'s matches:</h1>
 
 <div class="row">
-  <div class="col-md-3 matches">
+  <div class="col-md-2 col-md-offset-1 matches">
     <% if @users.length().>(1) %>
       <% @users.each() do |user2| %>
         <% if @user.match(user2) == "great match" && @user != user2 %>
@@ -11,16 +11,13 @@
       <% end %>
     <% end %>
   </div>
-</div>
 
   <div class="col-md-9">
     <div class="profile_info">
     <% if @selected_user %>
       <img src="http://www.lorempixel.com/300/300/people">
 
-      <p><%= @selected_user.first_name %></p>
-
-      <p><%= @selected_user.last_name %></p>
+      <p><%= @selected_user.first_name %> <%= @selected_user.last_name %></p>
 
       <p><%= @selected_user.email %></p>
 
@@ -31,5 +28,6 @@
       <p><%= @selected_user.pair_qualities %></p>
 
     <% end %>
+    </div>
   </div>
-  </div>
+</div>
