@@ -8,10 +8,10 @@
 <br>
 <% if @users.any? %>
   <% @users.each() do |user| %>
-  <div class="container-fluid">
+  <div class="container-fluid user-grid">
     <div class="row">
     <!-- <div class="col-sm-3"> -->
-    <div class="col-sm-3"><img src="http://www.lorempixel.com/200/200/people">
+    <div class="col-xs-6 col-sm-3"><img src="http://www.lorempixel.com/200/200/people">
       <br>
       <a href="/users/<%= user.id() %>"><b><%= user.first_name() %>&#160;<%= user.last_name() %></b></a>
       <br>
