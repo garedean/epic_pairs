@@ -104,8 +104,8 @@ post('/users') do
 end
 
 patch('/users/:id') do
-  rating_update = params.fetch("rating")
   @object = User.find(params["id"].to_i)
+  rating_update     = params["rating"]
   preferred_matches = params["preferred_matches"].join
   hometown          = params["hometown"]
   portland_duration = params["portland_duration"]

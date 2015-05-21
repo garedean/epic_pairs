@@ -82,6 +82,11 @@ user_list.each do |fname, lname, email|
       programmer_rating: Random.new.rand(1..5),
       pace_rating: Random.new.rand(1..5),
       project_rating: Random.new.rand(1..5),
-      lb_rating: Random.new.rand(1..5)
+      lb_rating: Random.new.rand(1..5),
+      hometown: "Portland",
+      portland_duration: "2 years",
+      hobbies: "Coding, jumping, eating sushi, riding antelopes",
+      pair_qualities: "Talking well, focused on front-end development, kind of heart and bold of spirit"
+
       )
 end
