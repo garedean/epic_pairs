@@ -82,6 +82,7 @@ end
   end
 
   define_method(:match) do |second_user|
+    total_points = 0
     total_points = self.prog_match(second_user)
     total_points = total_points + self.project_match(second_user)
     total_points = total_points + self.pace_match(second_user)
@@ -95,8 +96,6 @@ end
       "not a good match"
     end
   end
-
-
 
   define_singleton_method(:randomize_user_pref) do
     options = [1, 2, 3, 4, 5]
@@ -119,9 +118,6 @@ end
 
     matches
   end
-
-
-
 
   private
 
