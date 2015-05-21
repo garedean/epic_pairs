@@ -120,9 +120,6 @@ end
     matches
   end
 
-
-
-
   private
 
   define_method(:titleize_first_name) do

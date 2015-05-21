@@ -93,7 +93,10 @@ patch('/users/:id') do
   hobbies           = params["hobbies"]
   pair_qualities    = params["pair_qualities"]
   email             = params["email"]
-  @object.update(email: email, programmer_rating: rating_update, hometown: hometown, portland_duration: portland_duration, hobbies: hobbies, pair_qualities: pair_qualities, preferred_matches: preferred_matches)
+  project_match     = params["project_match"]
+  pace_match        = params["pace_match"]
+  lb_match          = params["lb_match"]
+  @object.update(email: email, programmer_rating: rating_update, hometown: hometown, portland_duration: portland_duration, hobbies: hobbies, pair_qualities: pair_qualities, preferred_matches: preferred_matches, project_rating: project_match, pace_rating: pace_match, lb_rating: lb_match)
 
   if @object.save
     redirect to("/users/#{@object.id}")
