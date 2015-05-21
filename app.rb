@@ -75,7 +75,7 @@ post('/users') do
   fname = params.fetch("fname")
   lname = params.fetch("lname")
   email = params.fetch("email")
-  @object = User.new(first_name: fname, last_name: lname, email: email)
+  @object = User.new(first_name: fname, last_name: lname, email: email, preferred_matches: "")
 
   if @object.save
     redirect to(:"users/#{@object.id}")
@@ -117,7 +117,7 @@ end
 get('/users/:user_id/matches/:id') do
   @user  = User.find(params[:user_id].to_i)
   @users = User.all()
-  @match = User.find(params[:id].to_i)
+  @selected_user = User.find(params[:id].to_i)
 
   erb(:"user/matches")
 end

@@ -32,6 +32,10 @@ button.stretch {
   width: 100%;
 }
 
+form label {
+  text-align: left;
+}
+
 .navbar .container-fluid {
   background: #f5f5f5;
 }

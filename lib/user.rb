@@ -98,31 +98,6 @@ end
     end
   end
 
-
-  define_method(:print_pref_match) do
-    match_ids = preferred_matches.split("").map(&:to_i)
-    matches = []
-
-      if match_ids.include? 1
-        matches << "1 - Dazed and confused"
-      end
-      if match_ids.include? 2
-        matches << "2 - Not quite there"
-      end
-      if match_ids.include? 3
-        matches << "3 - About average"
-      end
-      if match_ids.include? 4
-        matches << "4 - Feeling good"
-      end
-      if match_ids.include? 5
-        matches << "5 - Level 15 Ruby Wizard"
-      end
-    matches.join(', ')
-  end
-
-
-
   define_singleton_method(:randomize_user_pref) do
     options = [1, 2, 3, 4, 5]
     output_pref = []
