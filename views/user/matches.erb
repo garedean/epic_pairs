@@ -3,8 +3,9 @@
 <div class="row">
   <div class="col-md-3 matches">
     <% if @users.length().>(1) %>
+    <h3>These are your best matches:</h3>
       <% @users.each() do |user2| %>
-        <% if @user.preferred_match(user2) == 3 && user2.preferred_match(@user) == 3 && @user != user2 %>
+        <% if @user.match(user2) == "great match" && @user != user2 %>
           <a href="/users/<%= @user.id() %>/matches/<%= user2.id %>"><%= user2.first_name() %> <%= user2.last_name() %></a>
           <br>
         <% end %>

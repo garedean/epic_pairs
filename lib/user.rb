@@ -87,38 +87,13 @@ end
     total_points = total_points + self.pace_match(second_user)
     total_points = total_points + self.lb_match(second_user)
     total_points = total_points + self.preferred_match(second_user)
-    if total_points >= 18
+    if total_points >= 17
       "great match"
-    elsif total_points >= 13 && total_points <= 17
+    elsif total_points >= 12 && total_points <= 16
       "good match"
     else
       "not a good match"
     end
-  end
-
-
-
-
-  define_method(:print_pref_match) do
-    match_ids = preferred_matches.split("").map(&:to_i)
-    matches = []
-
-      if match_ids.include? 1
-        matches << "1 - Dazed and confused"
-      end
-      if match_ids.include? 2
-        matches << "2 - Not quite there"
-      end
-      if match_ids.include? 3
-        matches << "3 - About average"
-      end
-      if match_ids.include? 4
-        matches << "4 - Feeling good"
-      end
-      if match_ids.include? 5
-        matches << "5 - Level 15 Ruby Wizard"
-      end
-    matches.join(', ')
   end
 
 

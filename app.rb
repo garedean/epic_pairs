@@ -10,6 +10,24 @@ helpers do
     end
   end
 
+  def select_if_pace(object, expected)
+    if object.pace_rating && object.pace_rating == expected
+      "selected"
+    end
+  end
+
+  def select_if_comfort(object, expected)
+    if object.project_rating && object.project_rating == expected
+      "selected"
+    end
+  end
+
+  def select_if_focus(object, expected)
+    if object.lb_rating && object.lb_rating == expected
+      "selected"
+    end
+  end
+
   def select_if_match(object, expected)
     if object.preferred_matches
       preferred_matches = object.preferred_matches.split("").map(&:to_i)
