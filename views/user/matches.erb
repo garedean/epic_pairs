@@ -2,30 +2,17 @@
 
 <div class="row">
   <div class="col-md-3 matches">
-    <% @no_match = 0 %>
-    <% @users.each() do |user2| %>
-      <% if @user.preferred_match(user2) == 3 && user2.preferred_match(@user) == 3 && @user != user2 %>
-        <% @no_match + 1 %>
-        <a href="/users/<%= @user.id() %>/matches/<%= user2.id %>"><%= user2.first_name() %> <%= user2.last_name() %></a>
-        <br>
+    <% if @users.length().>(1) %>
+      <h3>These are your best matches:</h3>
+      <% @users.each() do |user2| %>
+        <% if @user.match(user2) == "great match" && @user != user2 %>
+          <a href="/users/<%= @user.id() %>/matches/<%= user2.id %>"><%= user2.first_name() %> <%= user2.last_name() %></a>
+          <br>
+        <% end %>
       <% end %>
     <% end %>
   </div>
 </div>
-
-  <% if @no_match = 0 %>
-    <div class="row text-center">
-      <div class="col-md-8 col-md-offset-2">
-        <p class="lead text-center no-matches">Oh no! We couldn't find any matches.</p>
-
-        <p class="lead text-center">Try being more broad with partner 'target skill levels' and try again.</p>
-
-        <a href="/users/<%= @user.id %>" class ="lead text-center">return to your profile page</a>
-      </div>
-    </div>
-  <% end %>
-
-  </div>
 
   <div class="col-md-9">
     <% if @selected_user %>

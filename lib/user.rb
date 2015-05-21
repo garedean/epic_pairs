@@ -83,16 +83,15 @@ end
 
   define_method(:match) do |second_user|
     total_points = 0
-    # total_points = self.prog_match(second_user)
-    # total_points = total_points + self.project_match(second_user)
-    # total_points = total_points + self.pace_match(second_user)
-    # total_points = total_points + self.lb_match(second_user)
+    total_points = self.prog_match(second_user)
+    total_points = total_points + self.project_match(second_user)
+    total_points = total_points + self.pace_match(second_user)
+    total_points = total_points + self.lb_match(second_user)
     total_points = total_points + self.preferred_match(second_user)
-    # if total_points >= 20
-      if total_points == 3
+    if total_points >= 17
       "great match"
-    # elsif total_points >= 15 && total_points <= 19
-    #   "good match"
+    elsif total_points >= 12 && total_points <= 16
+      "good match"
     else
       "not a good match"
     end

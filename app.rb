@@ -23,9 +23,9 @@ helpers do
   end
 
   def select_if_focus(object, expected)
-    # if object.focus && object.focus == expected
-    #   "selected"
-    # end
+    if object.lb_rating && object.lb_rating == expected
+      "selected"
+    end
   end
 
   def select_if_match(object, expected)

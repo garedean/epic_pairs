@@ -79,6 +79,9 @@ user_list.each do |fname, lname, email|
       last_name: lname,
       email: email,
       preferred_matches: User.randomize_user_pref,
-      programmer_rating: Random.new.rand(1..5)
+      programmer_rating: Random.new.rand(1..5),
+      pace_rating: Random.new.rand(1..5),
+      project_rating: Random.new.rand(1..5),
+      lb_rating: Random.new.rand(1..5)
       )
 end

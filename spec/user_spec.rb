@@ -53,7 +53,7 @@ describe('User') do
 
     it("says a match is not a great match if a user's preferred programming level does not match equals another user's programming level") do
       user1 = User.create(first_name: 'jim', last_name: 'smith', programmer_rating: 3, project_rating: 3, pace_rating: 5, lb_rating: 4, preferred_matches: "124")
-      user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 4, project_rating: 3, pace_rating: 5, lb_rating: 4, preferred_matches: "16")
+      user2 = User.create(first_name: 'john', last_name: 'thomas', programmer_rating: 5, project_rating: 3, pace_rating: 5, lb_rating: 4, preferred_matches: "16")
       expect(user1.preferred_match(user2)).to(eq(0))
     end
 
