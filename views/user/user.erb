@@ -1,15 +1,13 @@
 <div class="row">
-    <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-    <form class="form-horizontal" action="/users/<%= @user.id %>" method="post">
+    <div class="col-sm-12">
+    <form class="form" action="/users/<%= @user.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
 
-      <div class="col-sm-3">
+      <div class="col-sm-2">
 
-        <div class="row">
-          <div class="gravatar-wrapper">
-            <%= gravatar_link(@user) %>
-            <h4><%= "#{@user.first_name} #{@user.last_name}" %></h4>
-          </div>
+        <div class="gravatar-wrapper">
+          <%= gravatar_link(@user) %>
+          <h4><%= "#{@user.first_name} #{@user.last_name}" %></h4>
         </div>
 
         <div class="form-group">
@@ -28,12 +26,15 @@
         </div>
       </div>
 
-      <div class="col-sm-8 col-sm-offset-1">
+      <div class="col-sm-4 col-sm-offset-1">
+
+        <h5 class="text-center">Private</h5>
+        <hr>
 
         <div class="form-group">
-          <label for="rating" class="control-label">Compared to your peers, where would you place your skill level? (private)</label>
-          <select class="form-control" name="rating" size=5 required>
-              <option selected disabled hidden value=''></option>
+          <label for="rating" class="control-label">Compared to your peers, where would you place your skill level?</label>
+          <select class="form-control" name="rating">
+              <option selected disabled hidden value=''>Please choose</option>
               <option value="1" <%= select_if_skill(@user, 1) %>>1 - Dazed and confused</option>
               <option value="2" <%= select_if_skill(@user, 2) %>>2 - Not quite there</option>
               <option value="3" <%= select_if_skill(@user, 3) %>>3 - About average</option>
@@ -43,7 +44,7 @@
         </div>
 
         <div class="form-group">
-          <label for="preferred_matches" class="control-label">What levels would you like to work with? (private)</label>
+          <label for="preferred_matches" class="control-label">What levels would you like to work with?</label>
           <select multiple class="form-control" name="preferred_matches[]" size=5 required>
               <option value="1" <%= select_if_match(@user, 1) %>>1 - Dazed and confused</option>
               <option value="2" <%= select_if_match(@user, 2) %>>2 - Not quite there</option>
@@ -54,9 +55,9 @@
         </div>
 
         <div class="form-group">
-          <label for="project_match" class="control-label">How comfortable are you with the current project? (private)</label>
-          <select class="form-control" name="project_match" size=5 required>
-            <option selected disabled hidden value=''></option>
+          <label for="project_match" class="control-label">How comfortable are you with the current project?</label>
+          <select class="form-control" name="project_match">
+            <option selected disabled hidden value=''>Please choose</option>
             <option value="1" <%= select_if_comfort(@user, 1) %>>1 - Don't understand material</option>
             <option value="2" <%= select_if_comfort(@user, 2) %>>2 - Still confused</option>
             <option value="3" <%= select_if_comfort(@user, 3) %>>3 - Basic understanding</option>
@@ -66,10 +67,11 @@
         </div>
 
         <div class="form-group">
-          <label for="pace_match" class="control-label">What pace would you like to work at today?(private)</label>
+          <label for="pace_match" class="control-label">What pace would you like to work at today?</label>
           <option selected disabled hidden value=''></option>
-          <select class="form-control" name="pace_match" size=5 required>
-            <option value="1" <%= select_if_pace(@user, 1) %>>1 - Leisurely</option>
+          <select class="form-control" name="pace_match">
+            <option selected disabled hidden value=''>Please choose</option>
+            <option value="1" <%= select_if_pace(@user, 1) %>>2 - Slow and steady</option>
             <option value="2" <%= select_if_pace(@user, 2) %>>2 - Slow and steady</option>
             <option value="3" <%= select_if_pace(@user, 3) %>>3 - Going the speed limit</option>
             <option value="4" <%= select_if_pace(@user, 4) %>>4 - Slightly faster</option>
@@ -78,9 +80,10 @@
         </div>
 
         <div class="form-group">
-          <label for="lb_match" class="control-label">Would you rather focus on learning material or building something new? (private)</label>
-          <option selected disabled hidden value=''></option>
-          <select class="form-control" name="lb_match" size=5 required>
+          <label for="lb_match" class="control-label">Would you rather focus on learning material or building something new?</label>
+          <option selected disabled hidden value=''>Please choose</option>
+          <select class="form-control" name="lb_match">
+            <option selected disabled hidden value=''>Please choose</option>
             <option value="1" <%= select_if_focus(@user, 1) %>>1 - Focused on learning</option>
             <option value="2" <%= select_if_focus(@user, 2) %>>2 - More emphasis on learning</option>
             <option value="3" <%= select_if_focus(@user, 3) %>>3 - In between</option>
@@ -88,14 +91,20 @@
             <option value="5" <%= select_if_focus(@user, 5) %>>5 - Focused on building</option>
           </select>
         </div>
+      </div>
+
+      <div class="col-sm-4 col-sm-offset-1">
+
+        <h5 class="text-center">Shared</h5>
+        <hr>
 
         <div class="form-group">
-          <label for="hometown" class="control-label">Where'd you grow up? (public)</label>
+          <label for="hometown" class="control-label">Where'd you grow up?</label>
           <input id="hometown" class="form-control" name="hometown" type="text" value="<%= @user.hometown %>">
         </div>
 
         <div class="form-group">
-          <label for="portland_duration" class="control-label">How long have you lived in Portland? (public)</label>
+          <label for="portland_duration" class="control-label">How long have you lived in Portland?</label>
           <input id="portland_duration" class="form-control" name="portland_duration" type="text" value="<%= @user.portland_duration %>">
         </div>
 
@@ -106,7 +115,7 @@
         </div>
 
         <div class="form-group">
-          <label for="pair_qualities" class="control-label">What are some things you like in a pair? (public)</label>
+          <label for="pair_qualities" class="control-label">What are some things you like in a pair?</label>
           <textarea id="pair_qualities" class="form-control" name="pair_qualities" type="text"><%= @user.pair_qualities %>
           </textarea>
         </div>

@@ -28,34 +28,20 @@
   </div>
 
   <div class="col-md-9">
-    <% if @selected_users %>
+    <% if @selected_user %>
       <img src="http://www.lorempixel.com/300/300/people">
 
-      <p><%= @match.first_name %></p>
+      <p><%= @selected_user.first_name %></p>
 
-      <p><%= @match.last_name %></p>
+      <p><%= @selected_user.last_name %></p>
 
-      <p><%= @match.email %></p>
+      <p><%= @selected_user.email %></p>
 
-      <p><%= @match.hometown %></p>
+      <p><%= @selected_user.hometown %></p>
 
-      <p><%= @match.hobbies %></p>
+      <p><%= @selected_user.hobbies %></p>
 
-      <p><%= @match.pair_qualities %></p>
-
-      <!-- <p>Programmer Rating: <%= @match.programmer_rating %></p> -->
-
-      <!-- <p>Preferred Match: <%= @match.preferred_matches %></p> -->
+      <p><%= @selected_user.pair_qualities %></p>
 
     <% end %>
   </div>
-
-  <% if @user.preferred_matches == "" %>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <p class="lead text-center no-matches">Oh no! We couldn't find any matches.</p>
-
-        <p class="lead text-center">Try being more broad with partner 'target skill levels' and try again.</p>
-      </div>
-    </div>
-  <% end %>
