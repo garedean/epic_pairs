@@ -24,6 +24,18 @@ helpers do
     user_hash = user.email_hashed
     "<img src='http://www.gravatar.com/avatar/#{user_hash}?s=200'>"
   end
+
+  def matches_link
+    unless request.fullpath == "/" || request.fullpath == "/signup"
+        erb "<li><a href='/users/<%= @user.id %>/matches'>My Matches</a></li>"
+    end
+  end
+
+  def display?
+    if request.fullpath == "/" || request.fullpath == "/signup"
+        erb "none"
+    end
+  end
 end
 
 get('/') do
@@ -82,6 +94,7 @@ patch('/users/:id') do
   pair_qualities    = params["pair_qualities"]
   email             = params["email"]
   @object.update(email: email, programmer_rating: rating_update, hometown: hometown, portland_duration: portland_duration, hobbies: hobbies, pair_qualities: pair_qualities, preferred_matches: preferred_matches)
+
   if @object.save
     redirect to("/users/#{@object.id}")
   else
@@ -98,14 +111,13 @@ end
 
 get('/users/:id/profile') do
   @user = User.find(params.fetch("id").to_i)
+  erb(:"user/profile")
+end
+
+get('/users/:user_id/matches/:id') do
+  @user  = User.find(params[:user_id].to_i)
   @users = User.all()
+  @match = User.find(params[:id].to_i)
 
   erb(:"user/matches")
 end
-
-
-# delete('/users/:id') do
-#   @user = User.find(params.fetch("id").to_i).delete
-#   @users = User.all()
-#   redirect to(:"user/users")
-# end

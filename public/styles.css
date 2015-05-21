@@ -32,11 +32,6 @@ button.stretch {
   width: 100%;
 }
 
-.section-title {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
 .navbar .container-fluid {
   background: #f5f5f5;
 }
@@ -66,6 +61,23 @@ button.stretch {
   line-height: 40px;
   background: rgba(0, 0, 0, .5);
   height: 40px;
+}
+
+.no-matches {
+  margin-top: 150px;
+}
+
+.save-button-wrapper {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.save-button-wrapper button {
+  width: 200px;
+}
+
+.matches a {
+  font-size: 18px;
 }
 
 /* Extra small devices (phones, less than 768px) */

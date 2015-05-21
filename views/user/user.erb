@@ -1,14 +1,15 @@
-<!-- <h1 class="page-header"><%= "#{@user.first_name} #{@user.last_name}" %></h1> -->
-
 <div class="row">
-    <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"
+    <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
     <form class="form-horizontal" action="/users/<%= @user.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
+
       <div class="col-sm-3">
 
-        <div class="gravatar-wrapper">
-          <%= gravatar_link(@user) %>
-          <h4><%= "#{@user.first_name} #{@user.last_name}" %></h4>
+        <div class="row">
+          <div class="gravatar-wrapper">
+            <%= gravatar_link(@user) %>
+            <h4><%= "#{@user.first_name} #{@user.last_name}" %></h4>
+          </div>
         </div>
 
         <div class="form-group">
@@ -27,82 +28,58 @@
         </div>
       </div>
 
-      <div class="col-sm-9">
+      <div class="col-sm-8 col-sm-offset-1">
 
-        <h4 class="section-title">About Me</h4>
-
-        <h5 class="text-center">Care to share some pre-pairing info with your partner?</h5>
-
-          <div class="form-group">
-            <label for="hometown" class="col-sm-4 control-label">Where'd you grow up?</label>
-            <div class="col-sm-8">
-              <input id="hometown" class="form-control" name="hometown" type="text" value="<%= @user.hometown %>">
-            </div>
-          </input>
+        <div class="form-group">
+          <label for="rating" class="control-label">Compared to your peers, where would you place your skill level? (private)</label>
+          <select class="form-control" name="rating" size=5 required>
+              <option selected disabled hidden value=''></option>
+              <option value="1" <%= select_if_skill(@user, 1) %>>1 - Dazed and confused</option>
+              <option value="2" <%= select_if_skill(@user, 2) %>>2 - Not quite there</option>
+              <option value="3" <%= select_if_skill(@user, 3) %>>3 - About average</option>
+              <option value="4" <%= select_if_skill(@user, 4) %>>4 - Feeling good</option>
+              <option value="5" <%= select_if_skill(@user, 5) %>>5 - Level 15  coding Wizard</option>
+          </select>
         </div>
 
         <div class="form-group">
-          <label for="portland_duration" class="col-sm-4 control-label">How long have you lived in Portland?</label>
-          <div class="col-sm-8">
-            <input id="portland_duration" class="form-control" name="portland_duration" type="text" value="<%= @user.portland_duration %>">
-          </div>
+          <label for="preferred_matches" class="control-label">What levels would you like to work with? (private)</label>
+          <select multiple class="form-control" name="preferred_matches[]" size=5 required>
+              <option value="1" <%= select_if_match(@user, 1) %>>1 - Dazed and confused</option>
+              <option value="2" <%= select_if_match(@user, 2) %>>2 - Not quite there</option>
+              <option value="3" <%= select_if_match(@user, 3) %>>3 - About average</option>
+              <option value="4" <%= select_if_match(@user, 4) %>>4 - Feeling good</option>
+              <option value="5" <%= select_if_match(@user, 5) %>>5 - Level 15  coding Wizard</option>
+          </select>
         </div>
 
         <div class="form-group">
-          <label for="hobbies" class="col-sm-4 control-label">What do you like to do for fun?</label>
-          <div class="col-sm-8">
-            <textarea id="hobbies" class="form-control" name="hobbies" type="text"><%= @user.hobbies %>
-            </textarea>
-          </div>
+          <label for="hometown" class="control-label">Where'd you grow up? (public)</label>
+          <input id="hometown" class="form-control" name="hometown" type="text" value="<%= @user.hometown %>">
         </div>
 
         <div class="form-group">
-          <label for="pair_qualities" class="col-sm-4 control-label">What are some things you like in a pair?</label>
-          <div class="col-sm-8">
-            <textarea id="pair_qualities" class="form-control" name="pair_qualities" type="text"><%= @user.pair_qualities %>
-            </textarea>
-          </div>
+          <label for="portland_duration" class="control-label">How long have you lived in Portland? (public)</label>
+          <input id="portland_duration" class="form-control" name="portland_duration" type="text" value="<%= @user.portland_duration %>">
         </div>
 
         <div class="form-group">
-          <label for="rating" class="col-sm-4 control-label">Compared to your peers, where would you place your skill level? (not shared)</label><br>
-          <div class="col-sm-8">
-            <select class="form-control" name="rating" size=5 required>
-                <option selected disabled hidden value=''></option>
-                <option value="1" <%= select_if_skill(@user, 1) %>>1 - Dazed and confused</option>
-                <option value="2" <%= select_if_skill(@user, 2) %>>2 - Not quite there</option>
-                <option value="3" <%= select_if_skill(@user, 3) %>>3 - About average</option>
-                <option value="4" <%= select_if_skill(@user, 4) %>>4 - Feeling good</option>
-                <option value="5" <%= select_if_skill(@user, 5) %>>5 - Level 15 Ruby Wizard</option>
-            </select>
-          </div>
+          <label for="hobbies" class="control-label">What do you like to do for fun? (public)</label>
+          <textarea id="hobbies" class="form-control" name="hobbies" type="text"><%= @user.hobbies %>
+          </textarea>
         </div>
 
         <div class="form-group">
-          <label for="preferred_matches" class="col-sm-4 control-label">What levels would you like to work with? (not shared)</label><br>
-          <div class="col-sm-8">
-            <select multiple class="form-control" name="preferred_matches[]" size=5 required>
-                <option value="1" <%= select_if_match(@user, 1) %>>1 - Dazed and confused</option>
-                <option value="2" <%= select_if_match(@user, 2) %>>2 - Not quite there</option>
-                <option value="3" <%= select_if_match(@user, 3) %>>3 - About average</option>
-                <option value="4" <%= select_if_match(@user, 4) %>>4 - Feeling good</option>
-                <option value="5" <%= select_if_match(@user, 5) %>>5 - Level 15 Ruby Wizard</option>
-            </select>
-          </div>
+          <label for="pair_qualities" class="control-label">What are some things you like in a pair? (public)</label>
+          <textarea id="pair_qualities" class="form-control" name="pair_qualities" type="text"><%= @user.pair_qualities %>
+          </textarea>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row save-button-wrapper">
         <button type="submit" class="btn btn-primary stretch">Save</button>
       </div>
 
-      </form>
-    </div>
-
-
     </form>
-
-    <a href="/matches/<%= @user.id() %>">Matches</a>
-
   </div>
 </div>

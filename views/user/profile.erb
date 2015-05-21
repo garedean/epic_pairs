@@ -5,6 +5,7 @@
     <p>
       <%= @user.first_name %>
     </p>
+
   <br>
   <%= @user.last_name %>
   <br>
@@ -16,17 +17,11 @@
   <br>
   <%= @user.pair_qualities %>
   <br>
-<<<<<<< HEAD
   <p>Programmer Rating: <%= @user.programmer_rating %></p>
   <p>Preferred Match: <%= @user.preferred_matches %></p>
-=======
-  rating <%= @user.programmer_rating %>
-  <br>
-    preferred <%= @user.preferred_matches %>
->>>>>>> f9291ef208963b65a36d918f598f19455b12e5e1
   <br>
   <div class="row">
-    <a href='/matches' role="button" class="btn btn-primary">Return to my matches</a>
+    <!-- <a href='/users/<%= @user.id %>/matches' role="button" class="btn btn-primary">Return to my matches</a> -->
   </div>
 </div>
 </div>
