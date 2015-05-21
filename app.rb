@@ -5,15 +5,15 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 helpers do
   def select_if_skill(object, expected)
-    # if object.programmer_rating && object.programmer_rating == expected
-    #   "selected"
-    # end
+    if object.programmer_rating && object.programmer_rating == expected
+      "selected"
+    end
   end
 
   def select_if_comfort(object, expected)
-    # if object.comfort_rating && object.coimfort_rating == expected
-    #   "selected"
-    # end
+    if object.project_rating && object.project_rating == expected
+      "selected"
+    end
   end
 
   def select_if_pace(object, expected)

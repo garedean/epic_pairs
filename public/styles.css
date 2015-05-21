@@ -86,11 +86,23 @@ form label {
 
 .save-button-wrapper button {
   margin-top: 30px;
-  width: 200px;
+  width: 65%;
 }
 
 .matches a {
   font-size: 18px;
+}
+
+.user-grid img {
+  width: 100%;
+}
+
+.navbar-brand {
+  width: 200px;
+}
+
+.navbar-brand img {
+  float: left;
 }
 
 /* Extra small devices (phones, less than 768px) */
