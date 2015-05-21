@@ -29,17 +29,5 @@
 
       <p><%= @selected_user.pair_qualities %></p>
 
-
-
     <% end %>
   </div>
-
-  <% if @user.preferred_matches == "" %>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <p class="lead text-center no-matches">Oh no! We couldn't find any matches.</p>
-
-        <p class="lead text-center">Try being more broad with partner 'target skill levels' and try again.</p>
-      </div>
-    </div>
-  <% end %>
