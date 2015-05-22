@@ -38,6 +38,21 @@ helpers do
     end
   end
 
+  def random_image
+    picture = Random.new.rand(1..5)
+    if picture == 1
+      "people"
+    elsif picture == 2
+      "animals"
+    elsif picture == 3
+      "business"
+    elsif picture == 4
+      "cats"
+    else
+      "fashion"
+    end
+  end
+
   def gravatar_link(user)
     user_hash = user.email_hashed
     "<img src='http://www.gravatar.com/avatar/#{user_hash}?s=200'>"

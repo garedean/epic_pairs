@@ -13,12 +13,18 @@
     <!-- <div class="col-sm-3"> -->
     <div class="col-xs-6 col-sm-3">
       <div class="gravatar-wrapper grow">
-        <img src="http://www.lorempixel.com/200/200/people">
-      <h4>
+        <img src="http://www.lorempixel.com/200/200/<%= random_image %>">
+      <h4 class="first-last">
         <a href="/users/<%= user.id() %>">
-          <%= "#{user.first_name} #{user.last_name}" %></h4>
+          <%= "#{user.first_name} #{user.last_name}" %>
+      </h4>
+
+        <h4 class="first">
+          <a href="/users/<%= user.id() %>">
+              <%= "#{user.first_name}" %>
+        </h4>
         </a>
-        <a href="/users/<%= user.id %>/matches" role="button" class="btn btn-primary matches-link">Matches for <%= user.first_name %></a>
+        <a href="/users/<%= user.id %>/matches" role="button" class="matches-link">Matches<span class="match_link_secondary"> for <%= user.first_name %></span></a>
     </div>
 </div>
   <% end %>

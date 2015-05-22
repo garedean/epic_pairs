@@ -89,10 +89,8 @@ end
     total_points = total_points + self.pace_match(second_user)
     total_points = total_points + self.lb_match(second_user)
     total_points = total_points + self.preferred_match(second_user)
-    if total_points >= 17
+    if total_points >= 15
       "great match"
-    elsif total_points >= 12 && total_points <= 16
-      "good match"
     else
       "not a good match"
     end
